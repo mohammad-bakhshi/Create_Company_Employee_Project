@@ -29,3 +29,7 @@ const CompanySchema = new Schema({
     employees:[EmployeeSchema],
     timestamps:true
 })
+
+const company=mongoose.model('company',CompanySchema);
+
+module.exports=company;
