@@ -27,7 +27,6 @@ const CompanySchema = new Schema({
         required: true
     },
     employees:[EmployeeSchema],
-    timestamps:true
 })
 
 const company=mongoose.model('company',CompanySchema);

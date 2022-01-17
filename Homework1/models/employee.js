@@ -30,7 +30,6 @@ const EmployeeSchema = new Schema({
         type: Number,
         required: true
     },
-    timestamps: true
 });
 
 module.exports = EmployeeSchema;
