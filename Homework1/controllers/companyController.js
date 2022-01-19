@@ -24,20 +24,10 @@ const company_read = async (req, res) => {
 
 const company_insert = async (req, res) => {
     try {
-        let company = new Company({
-            name: req.body.name,
-            registrationNumber: req.body.registrationNumber,
-            province: req.body.province,
-            city: req.body.city,
-            registrationDate: req.body.registrationDate,
-            telephoneNumber: req.body.telephoneNumber,
-            employees: req.body.employees
-        });
-
-        company.save();
+        Company.create(req.body);
         res.json({ message: 'company was added successfully' });
     } catch (error) {
-
+        console.log(error);
     }
 }
 

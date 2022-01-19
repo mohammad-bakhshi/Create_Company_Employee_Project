@@ -4,27 +4,27 @@ const Schema = mongoose.Schema;
 const CompanySchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: [true,"Company's name is required."]
     },
     registrationNumber: {
         type: String,
-        required: true,
+        required: [true,"Company's Registration Number is required."],
     },
     province: {
         type: String,
-        required: true
+        required: [true,"Company's Province is required."]
     },
     city: {
         type: String,
-        required: true
+        required: [true,"Company's City is required."]
     },
     registrationDate: {
         type: Date,
-        required: true
+        required: [true,"Company's Registration Date is required."]
     },
     telephoneNumber: {
         type: String,
-        required: true
+        required: [true,"Company's Telephone Number is required."]
     },
     employees:[EmployeeSchema],
 })

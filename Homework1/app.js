@@ -7,7 +7,7 @@ const port=3000;
 
 //database disconnect handle return event
 dbConnection();
-// mongoose.conneciton('error',callback)
+// mongoose.connection('error',callback)
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -15,7 +15,9 @@ app.use(express.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use('/company',Company);
 app.use('/employee',Employee);
-
+app.use((req,res) => {
+    res.status(404).json({message:'page not found'});
+})
 
 
 
