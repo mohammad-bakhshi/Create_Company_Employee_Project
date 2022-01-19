@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const EmployeeSchema = require('./employee');
 const Schema = mongoose.Schema;
 const CompanySchema = new Schema({
-    name: {
+    companyName: {
         type: String,
         required: [true,"Company's name is required."]
     },
