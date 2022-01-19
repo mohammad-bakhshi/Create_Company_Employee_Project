@@ -12,6 +12,16 @@ const companies_read = async (req, res) => {
     }
 }
 
+const company_read = async (req, res) => {
+    try {
+        let id = req.params.id;
+        let company = await Company.findById(id);
+        res.json({ company: company });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const company_insert = async (req, res) => {
     try {
         let company = new Company({
@@ -55,4 +65,4 @@ const company_delete = async (req, res) => {
 
 
 
-module.exports = { companies_read, company_insert, company_edit, company_delete };
+module.exports = { companies_read,company_read, company_insert, company_edit, company_delete };

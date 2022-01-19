@@ -29,7 +29,7 @@ const EmployeeSchema = new Schema({
     age: {
         type: Number,
         required: true
-    },
+    }
 });
 
 module.exports = EmployeeSchema;
