@@ -1,43 +1,49 @@
 const Company = require('../models/company');
 const { createValidator, updateValidator } = require('../tools/companyValidator');
 
-//companies_read,company_insert,company_edit,company_delete
+//companies_read,company_insert,company_edit,company_delete,company_insert_index
 
 const companies_read = async (req, res) => {
     try {
         let companies = await Company.find();
-        res.json(companies);
+        res.status(200).render('index',{title:'companies',companies:companies});
     } catch (error) {
         console.log(error);
     }
 }
 
-const company_read = async (req, res) => {
+const company_insert_index=(req,res)=>{
+    res.status(200).render('insert',{title:'add new company'});
+    //res.json({message:'works'})
+}
+
+const company_read = async (req, res,next) => {
+    let id = req.params.id;
     try {
-        let id = req.params.id;
         let company = await Company.findById(id);
-        res.json({ company: company });
+        res.status(200).json({ company: company });
     } catch (error) {
-        console.log(error);
+        next();
     }
 }
 
 const company_insert = async (req, res) => {
-    try {
         let result = createValidator(req.body);
         if (result.status === false) {
-            res.json({ message: result.message });
+            res.status(400).json({ message: result.message });
         }
         else {
-            Company.create(req.body);
-            res.json({ message: 'company was added successfully' });
+            try {
+                Company.create(req.body);
+                //res.status(200).json({ message: 'company was added successfully' });
+                res.status(200).redirect('/company');
+            } catch (error) {
+                res.status(500).json({message:'Internal server error'});
+            }
         }
-    } catch (error) {
-        console.log(error);
-    }
 }
 
-const company_edit = async (req, res) => {
+const company_edit = async (req, res,next) => {
     const id = req.params.id;
     const updates = req.body;
     if (updateValidator(updates)) {
@@ -45,22 +51,26 @@ const company_edit = async (req, res) => {
             await Company.findByIdAndUpdate(id, updates);
             res.json({ message: 'company was updated successfully' });
         } catch (error) {
-            res.json({ message: 'There is no company with this id' });
+            res.status(404).json({ message: 'page was not found' });
         }
+    }
+    else{
+        res.status(400).json({message:'data is not valid'})
     }
 }
 
-const company_delete = async (req, res) => {
+const company_delete = async (req, res,next) => {
+    const id = req.params.id;
     try {
-        const id = req.params.id;
         await Company.findByIdAndDelete(id);
         res.json({ message: 'company was deleted successfully' });
     } catch (error) {
-        res.json({ message: 'There is no company with this id' });
+        console.log(error);
+        next();
     }
 }
 
 
 
 
-module.exports = { companies_read, company_read, company_insert, company_edit, company_delete };
+module.exports = { companies_read, company_read, company_insert, company_edit, company_delete,company_insert_index };

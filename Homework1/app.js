@@ -15,11 +15,8 @@ app.use(express.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use('/company',Company);
 //app.use('/employee',Employee);
-app.use((error,req,res,next)=>{
-    res.status(422).json({message:error.message});
-})
 app.use((req,res) => {
-    res.status(404).json({message:'page not found'});
+    res.status(404).render('404',{title:'not found'});
 })
 
 

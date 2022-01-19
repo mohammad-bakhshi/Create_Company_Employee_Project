@@ -18,6 +18,8 @@ router.put('/:id', companyController.company_edit);
 //delete a company
 router.delete('/:id', companyController.company_delete);
 
+router.get('/insert',companyController.company_insert_index);
+
 
 
 
