@@ -1,0 +1,123 @@
+<!-- component -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <nav class="bg-gray-800">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div class="relative flex items-center justify-between h-16">
+            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <h1 class="text-white"><%= company.companyName %> </h1>
+              </div>
+            <div class="flex justify-end">
+              <a href="/<%= company._id %> /employees/insert" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Add new employee
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="flex flex-col py-50 px-2">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div
+              class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+            >
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Age and Gender
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      Manager
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                     National Number
+                    </th>
+                    <th scope="col" class="relative px-6 py-3">
+                      <span class="sr-only">Edit</span>
+                    </th>
+                    <th scope="col" class="relative px-6 py-3">
+                      <span class="sr-only">Delete</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                  <% employees.forEach(employee=> { %>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                          <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">
+                              <%= employee.firstName %>
+                            </div>
+                            <div class="text-sm text-gray-500">
+                              <%= employee.lastName %>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">
+                          <%= employee.age %>
+                        </div>
+                        <div class="text-sm text-gray-500"><%= employee.gender %></div>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span
+                          class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                        >
+                          <%= employee.manager %>
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <%= employee.nationalNumber %>
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                      >
+                        <a href="/<%= employee._id %> " class="text-indigo-600 hover:text-indigo-900"
+                          >Edit</a
+                        >
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                      >
+                        <a name="deleteCompany" href="/<%= employee._id %> " class="text-red-600 hover:text-red-900"
+                          >Delete</a
+                        >
+                      </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- ====== Services Section End -->
+  </body>
+</html>
+

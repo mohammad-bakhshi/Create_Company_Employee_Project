@@ -7,7 +7,7 @@ $(document).ready(function () {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                window.location.replace('/company');
+                window.location.replace('/');
             })
             .catch(err => console.log(err));
     });

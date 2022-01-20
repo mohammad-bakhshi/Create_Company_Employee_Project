@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-//const EmployeeSchema = require('./employee');
+const EmployeeSchema = require('./employee');
 const Schema = mongoose.Schema;
 const CompanySchema = new Schema({
     companyName: {
@@ -26,7 +26,7 @@ const CompanySchema = new Schema({
         type: String,
         required: [true,"Company's Telephone Number is required."]
     },
-    //employees:[EmployeeSchema],
+    employees:[EmployeeSchema]
 })
 
 const company=mongoose.model('company',CompanySchema);

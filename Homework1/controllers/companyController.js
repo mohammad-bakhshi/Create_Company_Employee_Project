@@ -1,7 +1,7 @@
 const Company = require('../models/company');
 const { createValidator, updateValidator } = require('../tools/companyValidator');
 
-//companies_read,company_insert,company_edit,company_delete,company_insert_index
+//companies_read,company_insert,company_edit,company_delete,company_insert_index,company_moreInfo
 
 const companies_read = async (req, res) => {
     try {
@@ -18,10 +18,10 @@ const company_insert_index=(req,res)=>{
 }
 
 const company_read = async (req, res,next) => {
-    let id = req.params.id;
+    let companyId = req.params.companyId;
     try {
-        let company = await Company.findById(id);
-        res.status(200).json({ company: company });
+        let company = await Company.findById(companyId);
+        res.status(200).render('edit',{title:'edit',company: company });
     } catch (error) {
         next();
     }
@@ -36,7 +36,7 @@ const company_insert = async (req, res) => {
             try {
                 Company.create(req.body);
                 //res.status(200).json({ message: 'company was added successfully' });
-                res.status(200).redirect('/company');
+                res.status(200).redirect('/');
             } catch (error) {
                 res.status(500).json({message:'Internal server error'});
             }
@@ -44,11 +44,11 @@ const company_insert = async (req, res) => {
 }
 
 const company_edit = async (req, res,next) => {
-    const id = req.params.id;
+    const companyId = req.params.companyId;
     const updates = req.body;
     if (updateValidator(updates)) {
         try {
-            await Company.findByIdAndUpdate(id, updates);
+            await Company.findOneAndUpdate(companyId, updates);
             res.json({ message: 'company was updated successfully' });
         } catch (error) {
             res.status(404).json({ message: 'page was not found' });
@@ -60,9 +60,9 @@ const company_edit = async (req, res,next) => {
 }
 
 const company_delete = async (req, res,next) => {
-    const id = req.params.id;
+    const companyId = req.params.companyId;
     try {
-        await Company.findByIdAndDelete(id);
+        await Company.findOneAndDelete(companyId);
         res.json({ message: 'company was deleted successfully' });
     } catch (error) {
         console.log(error);

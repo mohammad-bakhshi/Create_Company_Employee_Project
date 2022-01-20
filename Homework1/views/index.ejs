@@ -4,15 +4,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.tailgrids.com/tailgrids-fallback.css"
-    />
     <title><%= title %></title>
   </head>
   <body>
-    <div class="flex flex-col py-2 px-2">
+<nav class="bg-gray-800">
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <h1 class="text-white">List of companies</h1>
+        </div>
+      <div class="flex justify-end">
+        <a href="/insert" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+          Add new company
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <div class="flex flex-col py-50 px-2">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div
@@ -51,6 +63,9 @@
                   <th scope="col" class="relative px-6 py-3">
                     <span class="sr-only">Delete</span>
                   </th>
+                  <th scope="col" class="relative px-6 py-3">
+                    <span class="sr-only">More info</span>
+                  </th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
@@ -87,15 +102,22 @@
                   <td
                     class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                    <a href="/<%= company._id %> " class="text-indigo-600 hover:text-indigo-900"
                       >Edit</a
                     >
                   </td>
                   <td
                     class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
                   >
-                    <a name="deleteCompany" href="/company/<%= company._id %> " class="text-red-600 hover:text-red-900"
+                    <a name="deleteCompany" href="/<%= company._id %> " class="text-red-600 hover:text-red-900"
                       >Delete</a
+                    >
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                  >
+                    <a href="/<%= company._id %>/employees" class="text-green-600 hover:text-green-900"
+                      >More info</a
                     >
                   </td>
                 </tr>
@@ -105,11 +127,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-center">
-        <a href="company/insert" name="addNewCompany" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded cursor-pointer">
-            Add new Company
-          </a>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="/scripts/indexScript.js"></script>

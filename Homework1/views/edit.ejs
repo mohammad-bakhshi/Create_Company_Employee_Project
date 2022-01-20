@@ -8,13 +8,14 @@
     <title><%= title %></title>
   </head>
   <body>
+<div class="bg-white shadow overflow-hidden sm:rounded-lg py-10 px-10">
     <div class="px-4 py-5 sm:px-6 flex justify-center">
       <h2 class="text-lg leading-6 font-medium text-gray-900">
-        Add new company
+        Edit company
       </h2>
       </div>
       <div class="flex justify-center">
-        <form class="w-full max-w-sm" action="/" method="POST">
+        <form class="w-full max-w-sm">
           <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/3">
               <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="companyName">
@@ -22,7 +23,7 @@
               </label>
             </div>
             <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="companyName" name="companyName" type="text">
+              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="companyName" name="companyName" type="text" value="<%= company.companyName %> ">
             </div>
           </div>
           <div class="md:flex md:items-center mb-6">
@@ -32,7 +33,7 @@
               </label>
             </div>
             <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="registrationNumber" name="registrationNumber" type="text">
+              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="registrationNumber" name="registrationNumber" type="text" value="<%= company.registrationNumber %> ">
             </div>
           </div>
           <div class="md:flex md:items-center mb-6">
@@ -42,7 +43,7 @@
               </label>
             </div>
             <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="province" name="province" type="text">
+              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="province" name="province" type="text" value="<%= company.province %> ">
             </div>
           </div>
           <div class="md:flex md:items-center mb-6">
@@ -52,7 +53,7 @@
               </label>
             </div>
             <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="city" name="city" type="text">
+              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="city" name="city" type="text"  value="<%= company.city %> ">
             </div>
           </div>
           <div class="md:flex md:items-center mb-6">
@@ -62,7 +63,7 @@
               </label>
             </div>
             <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="registrationDate" name="registrationDate" type="date">
+              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="registrationDate" name="registrationDate" type="text"  value="<%= company.registrationDate %> ">
             </div>
           </div>
           <div class="md:flex md:items-center mb-6">
@@ -72,7 +73,7 @@
               </label>
             </div>
             <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="telephoneNumber" name="telephoneNumber"type="text">
+              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="telephoneNumber" name="telephoneNumber"type="text"  value="<%= company.telephoneNumber %> ">
             </div>
           </div>
           <div class="md:flex md:items-center">
@@ -81,12 +82,15 @@
               <a href="/" class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer" type="submit">
                 Cancel
               </a>
-              <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                Add
-              </button>
+              <a name="editCompany" href="/<%= company._id %> " class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer" type="submit">
+                Edit
+              </a>
             </div>
           </div>
         </form>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="/scripts/editScript.js"></script>
   </div>
   </body>
   </html>
