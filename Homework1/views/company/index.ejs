@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="./styles/company/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2 id="example">List of<b> Companies</b></h2>
+            </div>
+            <div class="col-sm-6">
+              <a href="/insert" class="btn btn-success">
+                <span>Add New Company</span></a>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Company ID</th>
+              <th>Name</th>
+              <th>Telephone Number</th>
+              <th>Province</th>
+              <th>City</th>
+              <th>Registration Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% companies.forEach(company=> { %>
+            <tr>
+              <td><%= company._id %></td>
+              <td><%= company.companyName %></td>
+              <td><%= company.telephoneNumber %></td>
+              <td><%= company.province %></td>
+              <td><%= company.city %></td>
+              <td><%= company.registrationNumber %></td>
+              <td>
+                <a href="/<%= company._id %> " class="btn btn-success">Edit</a>
+                <button onclick="deleteCompany('<%=company._id%>')"
+                  class="btn btn-danger"
+                  name="deleteCompany">
+                  Delete
+                </button>
+                <button type="button" class="btn btn-info">More info</button>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%- include('../partials/scripts.ejs') %>
+    <script src="./scripts/company/index.js"></script>
+  </body>
+</html>
