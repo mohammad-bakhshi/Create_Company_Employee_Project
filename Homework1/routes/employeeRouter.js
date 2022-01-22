@@ -8,8 +8,8 @@ router.get('/',employeeController.employees_read);
 //insert page
 router.get('/insert',employeeController.employee_insert_index);
 
-// //insert an employee
-// router.post('/');
+//insert an employee
+router.post('/');
 
 // //edit an employee
 // router.post('/update');

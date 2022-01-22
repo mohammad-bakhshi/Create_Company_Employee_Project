@@ -40,12 +40,10 @@
               <td><%= company.registrationNumber %></td>
               <td>
                 <a href="/<%= company._id %> " class="btn btn-success">Edit</a>
-                <button onclick="deleteCompany('<%=company._id%>')"
-                  class="btn btn-danger"
-                  name="deleteCompany">
+                <button onclick="deleteCompany('<%=company._id%>')" class="btn btn-danger" name="deleteCompany">
                   Delete
                 </button>
-                <button type="button" class="btn btn-info">More info</button>
+                <a href="/<%= company._id%>/employees" class="btn btn-info">More info</a>
               </td>
             </tr>
             <% }) %>
