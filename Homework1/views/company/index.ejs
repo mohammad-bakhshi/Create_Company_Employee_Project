@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover" id="myTable">
           <thead>
             <tr>
               <th>Company ID</th>
@@ -40,7 +40,7 @@
               <td><%= company.registrationNumber %></td>
               <td>
                 <a href="/<%= company._id %> " class="btn btn-success">Edit</a>
-                <button onclick="deleteCompany('<%=company._id%>')" class="btn btn-danger" name="deleteCompany">
+                <button class="btn btn-danger btnDelete">
                   Delete
                 </button>
                 <a href="/<%= company._id%>/employees" class="btn btn-info">More info</a>

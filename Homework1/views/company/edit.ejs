@@ -5,36 +5,64 @@
     <link rel="stylesheet" href="/styles/company/edit.css">
     <title><%= title %></title>
   </head>
-  <body>
-    <div class="login-container text-c animated flipInX">
-      <h3 class="text-whitesmoke">Add Company</h3>
-      <div class="container-content">
-        <form class="margin-t">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Company Name" id="companyName" value="<%= company.companyName %> ">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Registration Number" id="registrationNumber" value="<%= company.registrationNumber %> ">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Province" id="province" value="<%= company.province %> ">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="City" id="city" value="<%= company.city %> ">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Registration Date" id="registrationDate" value="<%= company.registrationDate %> ">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Telephone Number" id="telephoneNumber" value="<%= company.telephoneNumber %> ">
-          </div>
-          <a href="/<%= company._id %>" name="editCompany" class="button form-button button-l margin-b">Update</a>
-          <a class="text-darkyellow" href="/"><small>Cancel</small></a>
-        </form>
-      </div>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Edit Company</h2>
+      <form class="form" id="form">
+        <div class="form-control" style="display: none">
+          <input type="text" id="companyID" value="<%= company._id %> ">
+        </div>
+        <div class="form-control">
+          <label for="companyName">Company Name</label>
+          <input type="text" id="companyName" value="<%= company.companyName %> ">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="registrationNumber">Registration Number</label>
+          <input type="text" id="registrationNumber" value="<%= company.registrationNumber %> ">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="province">Province</label>
+          <input type="text" id="province"  value="<%= company.province %> ">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="city">City</label>
+          <input type="text" id="city" value="<%= company.city %> ">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="registrationDate">Registration Date</label>
+          <input type="text" id="registrationDate" value="<%= company.registrationDate %> ">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="telephoneNumber">Telephone Number</label>
+          <input type="text" id="telephoneNumber" value="<%= company.telephoneNumber %> ">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <button>Add</button>
+      </form>
+      <a class="text-darkyellow" href="/"><small>Cancel</small></a>
     </div>
-    <%- include('../partials/scripts.ejs') %>
-      <script src="/scripts/company/edit.js"></script>
   </div>
+  <%- include('../partials/scripts.ejs') %>
+  <script src="./scripts/company/edit.js"></script> -->
+</body>
+</html>
   </body>
   </html>

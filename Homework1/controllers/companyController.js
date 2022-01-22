@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const { createValidator, updateValidator } = require('../tools/companyValidator');
 
 
-//companies_read,company_insert,company_edit,company_delete,company_insert_index,company_moreInfo
+// //companies_read,company_insert,company_edit,company_delete,company_insert_index,company_moreInfo
+
 const companies_read = async (req, res) => {
     try {
         let companies = await Company.find();
@@ -26,10 +27,10 @@ const company_insert = async (req, res) => {
     else {
         try {
             Company.create(req.body);
-            res.status(200).json({ pass: true, message: 'company was added successfully' });
+            res.status(200).json({ message: 'company was added successfully' });
         } catch (error) {
             console.log(error);
-            res.status(500).json({ pass: false, message: 'Internal server error' });
+            res.status(500).json({ message: 'Internal server error' });
         }
     }
 }
@@ -38,10 +39,10 @@ const company_delete = async (req, res) => {
     const companyId = req.params.companyId;
     try {
         await Company.findByIdAndDelete(companyId);
-        res.json({ deleted: true, message: 'company was deleted successfully' });
+        res.json({ message: 'company was deleted successfully' });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ deleted: false, message: 'Internal server error' });
+        res.status(500).json({ message: 'Internal server error' });
     }
 }
 
@@ -63,9 +64,10 @@ const company_edit = async (req, res) => {
     if (updateValidator(updates)) {
         try {
             await Company.findByIdAndUpdate(companyId, updates);
-            res.json({ updated: true, message: 'company was updated successfully' });
+            res.status(200).json({message: 'company was updated successfully' });
         } catch (error) {
-            res.status(404).json({updated:false, message: 'page was not found' });
+            console.log(error);
+            res.status(404).json({message: 'page was not found' });
         }
     }
     else {
@@ -77,4 +79,4 @@ const company_edit = async (req, res) => {
 
 
 
-module.exports = { companies_read, company_read, company_insert, company_edit, company_delete, company_insert_index };
+module.exports = { companies_read, company_insert_index, company_insert, company_delete, company_read, company_edit };

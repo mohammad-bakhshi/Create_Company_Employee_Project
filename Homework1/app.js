@@ -1,7 +1,7 @@
 const express = require('express');
 const dbConnection=require('./dbConnection');
 const Company=require('./routes/companyRouter');
-const Employee=require('./routes/employeeRouter');
+//const Employee=require('./routes/employeeRouter');
 const app = express();
 const port=3000;
 

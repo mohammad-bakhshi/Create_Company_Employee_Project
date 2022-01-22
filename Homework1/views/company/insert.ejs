@@ -1,38 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <%- include('../partials/head.ejs') %>
-    <link rel="stylesheet" href="/styles/company/insert.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/company/insert.css">
 </head>
-<body class="main-bg">
-  <div class="login-container text-c animated flipInX">
-    <h3 class="text-whitesmoke">Add Company</h3>
-    <div class="container-content">
-      <form class="margin-t" id="form">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Company Name" id="companyName">
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Add Company</h2>
+      <form class="form" id="form">
+        <div class="form-control">
+          <label for="companyName">Company Name</label>
+          <input type="text" id="companyName">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Registration Number" id="registrationNumber">
+        <div class="form-control">
+          <label for="registrationNumber">Registration Number</label>
+          <input type="text" id="registrationNumber">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Province" id="province">
+        <div class="form-control">
+          <label for="province">Province</label>
+          <input type="text" id="province">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="City" id="city">
+        <div class="form-control">
+          <label for="city">City</label>
+          <input type="text" id="city">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
         </div>
-        <div class="form-group">
-          <input type="date" class="form-control" placeholder="Registration Date" id="registrationDate">
+        <div class="form-control">
+          <label for="registrationDate">Registration Date</label>
+          <input type="date" id="registrationDate">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Telephone Number" id="telephoneNumber">
+        <div class="form-control">
+          <label for="telephoneNumber">Telephone Number</label>
+          <input type="text" id="telephoneNumber">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
         </div>
-        <button type="submit" class="form-button button-l margin-b">Add</button>
-        <a class="text-darkyellow" href="/"><small>Cancel</small></a>
+        <button>Add</button>
       </form>
+      <a class="text-darkyellow" href="/"><small>Cancel</small></a>
     </div>
   </div>
   <%- include('../partials/scripts.ejs') %>
-  <script src="./scripts/company/insert.js"></script>
+  <script src="./scripts/company/insert.js"></script> -->
 </body>
 </html>

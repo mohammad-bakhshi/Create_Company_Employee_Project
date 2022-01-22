@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const employeeRouter=require('./employeeRouter');
+//const employeeRouter=require('./employeeRouter');
 const companyController = require('../controllers/companyController');
 
 
@@ -18,7 +18,7 @@ router.delete('/:companyId', companyController.company_delete);
 
 
 //read a company
-router.get('/:companyId', companyController.company_read)
+router.get('/:companyId', companyController.company_read);
 
 
 
@@ -27,8 +27,8 @@ router.put('/:companyId', companyController.company_edit);
 
 
 
-//get employees
-router.use('/:companyId/employees',employeeRouter)
+// //get employees
+// router.use('/:companyId/employees',employeeRouter)
 
 
 
