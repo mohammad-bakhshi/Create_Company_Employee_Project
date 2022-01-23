@@ -1,101 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title><%= title %></title>
-  </head>
-  <body>
-    <div class="px-4 py-5 sm:px-6 flex justify-center">
-      <h2 class="text-lg leading-6 font-medium text-gray-900">
-        Add new employee
-      </h2>
-      </div>
-      <div class="flex justify-center">
-        <form class="w-full max-w-sm" action="/<%= company._id %> /employees" method="POST">
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="firstName">
-                Firstname
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="firstName" name="firstName" type="text">
-            </div>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="lastName">
-                Lastname
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="lastName" name="lastName" type="text">
-            </div>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="nationalNumber">
-                Nationalnumber
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="nationalNumber" name="nationalNumber" type="text">
-            </div>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="gender">
-                Gender
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="gender" name="gender" type="text">
-            </div>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="manager">
-                Manager
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="manager" name="manager" type="text">
-            </div>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="dateOfBirth">
-                DateOfBirth
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="dateOfBirth" name="dateOfBirth" type="text">
-            </div>
-          </div>
-          <div class="md:flex md:items-center mb-6">
-            <div class="md:w-1/3">
-              <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="age">
-                Age
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="age" name="age" type="text">
-            </div>
-          </div>
-          <div class="md:flex md:items-center">
-            <div class="md:w-1/3"></div>
-            <div class="md:w-2/3">
-              <a href="/<%= company._id %> /employees" class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer">
-                Cancel
-              </a>
-              <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                Add
-              </button>
-            </div>
-          </div>
-        </form>
+
+<head>
+  <%- include('../partials/head.ejs') %>
+  <link rel="stylesheet" href="/styles/employee/insert.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Add Employee</h2>
+      <form class="form" id="form">
+        <div style="display: none">
+          <input type="text" id="companyId" value="<%= company._id.toString() %> ">
+        </div>
+        <div class="form-control">
+          <label for="firstName">Firstname</label>
+          <input type="text" id="firstName">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="lastName">Lastname</label>
+          <input type="text" id="lastName">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="nationalNumber">National Number</label>
+          <input type="text" id="nationalNumber">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" />
+        <label for="female">Female</label><br><br><br>
+        </div>
+        <div class="form-control">
+          <label for="manager">Manager</label>
+          <input type="checkbox" id="manager" value="Are you a manager?">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="dateofbirth">Date of birth</label>
+          <input type="date" id="dateofbirth">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="age">Age</label>
+          <input type="number" id="age">
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <button>Add</button>
+      </form>
+      <a class="text-darkyellow" href="/"><small>Cancel</small></a>
+    </div>
   </div>
-  </body>
-  </html>
+  <%- include('../partials/scripts.ejs') %>
+    <script src="/scripts/employee/insert.js"></script>
+    </div>
+</body>
+
+</html>

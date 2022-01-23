@@ -1,5 +1,4 @@
 const Company = require('../models/company');
-const mongoose = require('mongoose');
 const { createValidator, updateValidator } = require('../tools/companyValidator');
 
 

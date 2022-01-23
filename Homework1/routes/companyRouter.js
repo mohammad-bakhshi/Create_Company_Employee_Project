@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//const employeeRouter=require('./employeeRouter');
+const employeeRouter=require('./employeeRouter');
 const companyController = require('../controllers/companyController');
 
 
@@ -27,8 +27,9 @@ router.put('/:companyId', companyController.company_edit);
 
 
 
-// //get employees
-// router.use('/:companyId/employees',employeeRouter)
+//get employees
+router.use('/:companyId/employees',employeeRouter)
+
 
 
 
