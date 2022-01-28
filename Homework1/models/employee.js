@@ -11,25 +11,30 @@ const EmployeeSchema = new Schema({
     },
     nationalNumber: {
         type: String,
-        required: true
+       
     },
     gender: {
         type: String,
         enum: ["male", "female"],
-        required: true
+      
     },
     manager: {
         type: Boolean,
-        required: true
+   
     },
     dateOfBirth: {
         type: Date,
-        required: true
+       
     },
     age: {
         type: Number,
+   
+    },
+    companyId:{
+        ref:"company",
+        type:Schema.Types.ObjectId,
         required: true
     }
 });
-
-module.exports = EmployeeSchema;
+const employee=mongoose.model('employee',EmployeeSchema);
+module.exports = employee;

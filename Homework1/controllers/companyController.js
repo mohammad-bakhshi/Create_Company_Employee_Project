@@ -4,13 +4,15 @@ const { createValidator, updateValidator } = require('../tools/companyValidator'
 
 // //companies_read,company_insert,company_edit,company_delete,company_insert_index,company_moreInfo
 
-const companies_read = async (req, res) => {
+const companies_read = async (req, res,next) => {
     try {
         let companies = await Company.find();
-        res.status(200).render('company/index', { title: 'companies', companies: companies });
+        //res.status(200).render('company/index', { title: 'companies', companies: companies });
+        res.json({ companies: companies});
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'Internal server error' });
+        //res.status(500).json({ message: 'Internal server error' });
+        next(error);
     }
 }
 
@@ -25,7 +27,7 @@ const company_insert = async (req, res) => {
     }
     else {
         try {
-            Company.create(req.body);
+           await Company.create(req.body);
             res.status(200).json({ message: 'company was added successfully' });
         } catch (error) {
             console.log(error);
@@ -38,7 +40,7 @@ const company_delete = async (req, res) => {
     const companyId = req.params.companyId;
     try {
         await Company.findByIdAndDelete(companyId);
-        res.json({ message: 'company was deleted successfully' });
+        res.status(200).json({ message: 'company was deleted successfully' });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Internal server error' });

@@ -9,7 +9,7 @@ const CompanySchema = new Schema({
     registrationNumber: {
         type: String,
         required: [true,"Company's Registration Number is required."],
-    },
+    },   
     province: {
         type: String,
         required: [true,"Company's Province is required."]
@@ -26,9 +26,21 @@ const CompanySchema = new Schema({
         type: String,
         required: [true,"Company's Telephone Number is required."]
     },
-    employees:[EmployeeSchema]
+    
+},{
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
 })
-
+CompanySchema.virtual("employees",{ 
+    ref:'employee',
+    foreignField:'companyId',
+    localField:'_id'
+})
+CompanySchema.pre(/^find/,function(next)
+{
+    this.populate("employees");
+    next();
+})
 const company=mongoose.model('company',CompanySchema);
 
 module.exports=company;

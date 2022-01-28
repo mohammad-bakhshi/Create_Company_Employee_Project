@@ -1,4 +1,5 @@
 const express = require('express');
+const Employee=require('../models/employee')
 const router=express.Router({mergeParams: true});
 const employeeController=require('../controllers/employeeController');
 
@@ -9,7 +10,10 @@ router.get('/',employeeController.employees_read);
 router.get('/insert',employeeController.employee_insert_index);
 
 //insert an employee
-router.post('/');
+router.post('/employee',async (req,res)=>{
+    const employee = await Employee.create(req.body);
+    res.send('ok');
+});
 
 // // //edit an employee
 // // router.post('/update');

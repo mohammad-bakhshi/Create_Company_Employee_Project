@@ -1,0 +1,34 @@
+const Sequelize= require('sequelize');
+
+module.exports=sequelize.define("Companies",{
+id:{
+    type:Sequelize.INTEGER(11),
+    allowNull:false,
+    autoIncrement:true,
+    primaryKey:true
+},
+companyName:{
+    type:Sequelize.STRING,
+    allowNull:false
+},
+registrationNumber:{
+    type:Sequelize.STRING,
+    allowNull:false
+},
+province:{
+    type:Sequelize.STRING,
+    allowNull:false
+},
+city:{
+    type:Sequelize.STRING,
+    allowNull:false
+},
+registrationDate:{
+    type:Sequelize.DATE,
+    allowNull:false
+},
+telephoneNumber:{
+    type:Sequelize.STRING,
+    allowNull:false
+}
+});
